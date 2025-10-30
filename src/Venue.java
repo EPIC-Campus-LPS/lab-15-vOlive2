@@ -8,7 +8,6 @@ public class Venue {
 			}
 		}
 	}
-	
 	public boolean buyTicket(int row, int col) {if(seats[row][col].avalable()) {seats[row][col].buySeat();return true;}return false;}
 	private boolean isAvailable(int row, int col) {return seats[row][col].avalable();}	
 	public void setPremium(int row, double price) {for(int i = 0; i < seats.length; i++) {seats[row][i].pre(price);}}
