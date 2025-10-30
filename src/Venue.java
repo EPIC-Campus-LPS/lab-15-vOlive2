@@ -15,7 +15,6 @@ public class Venue {
 	public void setPremium(int row, int colStart, int colEnd, double price) {for(int i = colStart; i < colEnd; i++) {seats[row][i].pre(price);}}
 	public void setGA(int row, double price) {for(int i = 0; i < seats.length; i++) {seats[row][i].gen(price);}}
 	//public boolean importTickets(String filename) throws IOException {}
-	
 	public double totalRevenue() {
 		double rev = 0.0;
 		for(int i = 0; i < seats.length; i++) {
@@ -65,12 +64,34 @@ public class Venue {
 			System.out.print("\n");
 		}
 	}
+	public void printVenuePrice() {
+		for(Seat[] s : seats) {
+			for(Seat t : s) {
+				System.out.print(t.getPrice());
+			}
+			System.out.print("\n");
+		}
 	}
-	
-	public void printVenuePrice() {}
-	
-	public double maxPrice(int rowStart, int rowEnd, int colStart, int colEnd) {}
-	public boolean containsGA(int row) {}
-	public boolean allPremium(int col) {}
+	public double maxPrice(int rowStart, int rowEnd, int colStart, int colEnd) {
+		double max = 0.0;
+		for(int i = rowStart; i < rowEnd; i++) {
+			for(int j = colStart; j < colEnd; j++) {
+				if(seats[i][j].getPrice() > max) max = seats[i][j].getPrice();
+			}
+		}
+		return max;
+	}
+	public boolean containsGA(int row) {
+		for(int i = 0; i < seats.length; i++) {
+			if(seats[row][i].getType().equals("G")) return true;
+		}
+		return false;
+	}
+	public boolean allPremium(int col) {
+		for(int i = 0; i < seats.length; i++) {
+			if(!(seats[i][col].getType().equals("P"))) return false;
+		}
+		return true;
+	}
 
 }
