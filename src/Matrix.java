@@ -28,7 +28,6 @@ public class Matrix {
 		}
 		return pairs;
 	}
-	
 	public static void checkDuplicates() {
 		for(int i = 1; i <= 15; i++) {
 			int c = 0;
@@ -39,5 +38,8 @@ public class Matrix {
 			}
 			System.out.println(i + ": " + c);
 		}
+	}
+	public static void shiftRight(int shift, int row) {
+		
 	}
 }
