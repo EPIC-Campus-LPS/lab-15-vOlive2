@@ -59,4 +59,20 @@ public class Matrix {
 		matrix[4][col] = temp;
 		shiftRight(shift - 1, col);
 	}
+	public static void reverseRow(int row)  {
+		int temp = matrix[row][0];
+		matrix[row][0] = matrix[row][4];
+		matrix[row][4] = temp;
+		temp = matrix[row][1];
+		matrix[row][1] = matrix[row][3];
+		matrix[row][3] = temp;
+	}
+	public static void reverseCol(int col) {
+		int temp = matrix[0][col];
+		matrix[0][col] = matrix[4][col];
+		matrix[4][col] = temp;
+		temp = matrix[1][col];
+		matrix[1][col] = matrix[3][col];
+		matrix[3][col] = temp;
+	}
 }
