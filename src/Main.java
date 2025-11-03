@@ -24,7 +24,7 @@ public class Main {
             row++;  
         }  
   
-        if(venue.importTickets("sold_150.csv")){  
+        if(venue.importTickets("sold.txt")){  
             System.out.println("\nTotal Revenue: " + venue.totalRevenue()); // 8650.0  
             System.out.println("Total Revenue, Column 27: " + venue.totalRevenue(27)); // 225.0  
   

@@ -1,6 +1,6 @@
 import java.io.File;
 import java.util.Scanner;
-
+import java.io.IOException;
 public class Venue {
 	Seat[][] seats;
 	Venue(int row, int col, double price) {
@@ -18,7 +18,6 @@ public class Venue {
 	public void setGA(int row, double price) {for(int i = 0; i < seats.length; i++) {seats[row][i].gen(price);}}
 	public boolean importTickets(String filename) throws IOException {
 		File f = new File(filename);
-		//System.out.print("R: " + data.length + ", C: " + data[0].length + "\n\n");
 		Scanner scan = new Scanner(f);
 		String line = scan.nextLine();
 		while(scan.hasNextLine()) {
@@ -27,6 +26,7 @@ public class Venue {
 			seats[Integer.parseInt(splitline[0])][Integer.parseInt(splitline[1])].buySeat();
 		}
 		scan.close();
+		return true;
 	}
 	public double totalRevenue() {
 		double rev = 0.0;
