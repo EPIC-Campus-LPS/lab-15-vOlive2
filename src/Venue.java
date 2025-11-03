@@ -13,14 +13,17 @@ public class Venue {
 	}
 	public boolean buyTicket(int row, int col) {if(seats[row][col].avalable()) {seats[row][col].buySeat();return true;}return false;}
 	private boolean isAvailable(int row, int col) {return seats[row][col].avalable();}	
-	public void setPremium(int row, double price) {for(int i = 0; i < seats.length; i++) {seats[row][i].pre(price);}}
-	public void setPremium(int row, int colStart, int colEnd, double price) {for(int i = colStart; i < colEnd; i++) {seats[row][i].pre(price);}}
-	public void setGA(int row, double price) {for(int i = 0; i < seats.length; i++) {seats[row][i].gen(price);}}
+	public void setPremium(int row, double price) {for(int i = 0; i < seats[row].length; i++) {seats[row-1][i].pre(price);}}
+	public void setPremium(int row, int colStart, int colEnd, double price) {for(int i = colStart; i < colEnd; i++) {seats[row-1][i].pre(price);}}
+	public void setGA(int row, double price) {for(int i = 0; i < seats[row].length; i++) {seats[row][i].gen(price);}}
 	public boolean importTickets(String filename) throws IOException {
 		File f = new File(filename);
+		int c = 0;
 		Scanner scan = new Scanner(f);
 		String line;
 		while(scan.hasNextLine()) {
+			System.out.print(c);
+			c++;
 			line = scan.nextLine();
 			String[] splitline = line.split(",");
 			seats[Integer.parseInt(splitline[0])][Integer.parseInt(splitline[1])].buySeat();
@@ -40,7 +43,7 @@ public class Venue {
 	public double totalRevenue(int col) {
 		double rev = 0.0;
 		for(int i = 0; i < seats.length; i++) {
-			rev += seats[i][col].getPrice();
+			rev += seats[i][col].getPriceSold();
 		}
 		return rev;
 		
@@ -56,7 +59,7 @@ public class Venue {
 	}
 	public int totalSold(int row) {
 		int sold = 0;
-		for(int i = 0; i < seats.length; i++) {
+		for(int i = 0; i < seats[row].length; i++) {
 			sold += seats[row][i].soldNum();
 		}
 		return sold;
@@ -80,7 +83,7 @@ public class Venue {
 	public void printVenuePrice() {
 		for(Seat[] s : seats) {
 			for(Seat t : s) {
-				System.out.print(t.getPrice());
+				System.out.print(t.getPrice()+" ");
 			}
 			System.out.print("\n");
 		}

@@ -6,7 +6,7 @@ public class Main {
         Venue venue = new Venue(20, 50, 50.0);  
   
         System.out.println("Set first 4 rows to premium with price 100.00.");  
-        int row = 0;  
+        int row = 1;  
         while(row < 5){  
             venue.setPremium(row, 100.00);  
             row++;  
@@ -20,12 +20,12 @@ public class Main {
         }  
   
         System.out.println("Set last 5 rows to general admission with price 25.00.");  
-        row = 14;  
+        row = 15;  
         while(row < 20){  
             venue.setGA(row, 25.00);  
             row++;  
         }  
-  
+        venue.printVenuePrice();
         if(venue.importTickets("sold.txt")){  
             System.out.println("\nTotal Revenue: " + venue.totalRevenue()); // 8650.0  
             System.out.println("Total Revenue, Column 27: " + venue.totalRevenue(27)); // 225.0  
