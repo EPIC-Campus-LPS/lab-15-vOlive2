@@ -1,3 +1,6 @@
+import java.io.File;
+import java.util.Scanner;
+
 public class Venue {
 	Seat[][] seats;
 	Venue(int row, int col, double price) {
@@ -13,7 +16,18 @@ public class Venue {
 	public void setPremium(int row, double price) {for(int i = 0; i < seats.length; i++) {seats[row][i].pre(price);}}
 	public void setPremium(int row, int colStart, int colEnd, double price) {for(int i = colStart; i < colEnd; i++) {seats[row][i].pre(price);}}
 	public void setGA(int row, double price) {for(int i = 0; i < seats.length; i++) {seats[row][i].gen(price);}}
-	//public boolean importTickets(String filename) throws IOException {}
+	public boolean importTickets(String filename) throws IOException {
+		File f = new File(filename);
+		//System.out.print("R: " + data.length + ", C: " + data[0].length + "\n\n");
+		Scanner scan = new Scanner(f);
+		String line = scan.nextLine();
+		while(scan.hasNextLine()) {
+			line = scan.nextLine();
+			String[] splitline = line.split(",");
+			seats[Integer.parseInt(splitline[0])][Integer.parseInt(splitline[1])].buySeat();
+		}
+		scan.close();
+	}
 	public double totalRevenue() {
 		double rev = 0.0;
 		for(int i = 0; i < seats.length; i++) {
