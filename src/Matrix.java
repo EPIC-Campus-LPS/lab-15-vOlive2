@@ -16,7 +16,8 @@ public class Matrix {
 			}
 			System.out.print("\n");
 		}
-		detectEquivalentAdjacentPairs();
+		System.out.println("Pairs: " + detectEquivalentAdjacentPairs());
+		checkDuplicates();
 	}
 	public static int detectEquivalentAdjacentPairs() {
 		int pairs = 0;
@@ -28,7 +29,15 @@ public class Matrix {
 		return pairs;
 	}
 	
-	public static void checkDuplicates(int[][] arr) {
-		return;
+	public static void checkDuplicates() {
+		for(int i = 1; i <= 15; i++) {
+			int c = 0;
+			for(int j = 0; j < matrix.length; j++) {
+				for(int k = 0; k < matrix[j].length; k++) {
+					if(matrix[j][k] == i) c++;
+				}
+			}
+			System.out.println(i + ": " + c);
+		}
 	}
 }
