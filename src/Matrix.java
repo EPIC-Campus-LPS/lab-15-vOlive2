@@ -40,6 +40,23 @@ public class Matrix {
 		}
 	}
 	public static void shiftRight(int shift, int row) {
-		
+		if(shift == 0) {return;}
+		int temp = matrix[row][0];
+		matrix[row][0] = matrix[row][1];
+		matrix[row][1] = matrix[row][2];
+		matrix[row][2] = matrix[row][3];
+		matrix[row][3] = matrix[row][4];
+		matrix[row][4] = temp;
+		shiftRight(shift - 1, row);
+	}
+	public static void shiftUp(int shift, int col) {
+		if(shift == 0) {return;}
+		int temp = matrix[0][col];
+		matrix[0][col] = matrix[1][col];
+		matrix[1][col] = matrix[2][col];
+		matrix[2][col] = matrix[3][col];
+		matrix[2][col] = matrix[4][col];
+		matrix[4][col] = temp;
+		shiftRight(shift - 1, col);
 	}
 }
