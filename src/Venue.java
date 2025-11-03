@@ -19,7 +19,7 @@ public class Venue {
 	public boolean importTickets(String filename) throws IOException {
 		File f = new File(filename);
 		Scanner scan = new Scanner(f);
-		String line = scan.nextLine();
+		String line;
 		while(scan.hasNextLine()) {
 			line = scan.nextLine();
 			String[] splitline = line.split(",");
@@ -32,7 +32,7 @@ public class Venue {
 		double rev = 0.0;
 		for(int i = 0; i < seats.length; i++) {
 			for(int j = 0; j < seats[i].length; j++) {
-				rev += seats[i][j].getPrice();
+				rev += seats[i][j].getPriceSold();
 			}
 		}
 		return rev;
